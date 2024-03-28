@@ -3,13 +3,11 @@ const authorization=require("../middlewares/auth.middleware");
 const EmployeeModel=require("../models/Employee.model");
 
 const EmployeeController=Router();
-EmployeeController.get("/test",(req,res)=>{
-    if(req.session.user) res.json({user:req.session.user})
-    else res.json("working")
-  })
+
   EmployeeController.post("/employees",async (req,res)=>{
     try
     {
+        
         const {firstName,lastName,email,department,salary}=req.body;
         const employee = new EmployeeModel({
             firstName,lastName,email,department,salary
